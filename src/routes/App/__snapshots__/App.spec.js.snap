@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component should render without throwing an error 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="side"
+  >
+    <h2>
+      Categories
+    </h2>
+    <div
+      className="navbar"
+    >
+      <ul />
+    </div>
+  </div>
+  <div
+    className="main"
+  >
+    <div
+      className="main"
+    >
+      <div
+        className="wrapper"
+      >
+        <div
+          className="spinner"
+          style={
+            Object {
+              "display": "block",
+              "fontSize": "3em",
+              "left": "60%",
+              "top": "60%",
+            }
+          }
+        >
+          <span
+            className="fa fa-circle-o-notch fa-spin"
+          />
+        </div>
+      </div>
+      <div
+        className="btn_wrapper"
+      >
+        <button
+          className="btn_more"
+          onClick={[Function]}
+        >
+          More
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

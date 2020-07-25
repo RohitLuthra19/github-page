@@ -1,0 +1,36 @@
+.side {
+    flex: 20%;
+    /* background-color: #bbb8b8; */
+    padding: 20px;
+    height: 100vh;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  border-radius: 50%!important;
+}
+
+.fullname {
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.username {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: #666;
+}
+
+.btn {
+  color: #24292e;
+  background-color: #fafbfc;
+  border-color: rgba(27,31,35,.15);
+  box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+  transition: background-color .2s cubic-bezier(.3,0,.5,1);
+}
