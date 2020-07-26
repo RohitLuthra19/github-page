@@ -6,5 +6,6 @@ export const initialState = fromJS({
     error: false,
     profile: {},
     repos: [],
+    filteredRepos: []
   }
 })

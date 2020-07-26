@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import ListItem from "../../components/ListItem";
 import Dropdown from "../../components/Dropdown";
-import { getRepositories } from "../../redux/user/reducer";
+import { getRepositories, filterRepositories } from "../../redux/user/reducer";
 import RepoIcon from "../../assets/repo-icon";
 import "./Main.css";
 
@@ -76,17 +76,19 @@ export class Main extends React.PureComponent {
   };
 
   handleLanguage = (id, key) => {
-    let temp = this.state.language;
-    temp.forEach((item) => (item.selected = false));
-    temp[id].selected = true;
+    let { language} = this.state;
+    language.forEach((item) => (item.selected = false));
+    language[id].selected = true;
     this.setState({
-      language: temp,
+      language,
       selectedLanguage: key,
+    }, () => {
+      this.props.filterRepositories(key)
     });
   };
 
   render() {
-    const { repos, fetching } = this.props;
+    const { filteredRepos, fetching } = this.props;
     const { searchInput, type, language } = this.state;
 
     if (fetching) {
@@ -128,7 +130,7 @@ export class Main extends React.PureComponent {
               </button>
             </div>
           </form>
-          <ul className="repo-list">{this.renderRepositories(repos)}</ul>
+          <ul className="repo-list">{this.renderRepositories(filteredRepos)}</ul>
         </>
       );
   }
@@ -141,14 +143,15 @@ export class Main extends React.PureComponent {
   //  RENDER METHODS
   ///////////////////////////////////////////////////////////////////////
   renderRepositories(repos) {
-    const { searchInput, } = this.state;
+    const { searchInput } = this.state;
     return repos
-      .filter((item) =>
-        item?.name?.toLowerCase().includes(searchInput?.toLowerCase())
+      .filter(
+        (item) =>
+          item?.name?.toLowerCase().includes(searchInput?.toLowerCase()) 
       )
-      .map((repo) => {;
+      .map((repo) => {
         return <ListItem key={repo?.id} data={repo} />;
-      })
+      });
   }
 }
 
@@ -161,6 +164,7 @@ function mapStateToProps(state) {
 
   return {
     repos: userToJS.user.repos,
+    filteredRepos: userToJS.user.filteredRepos,
     fetching: userToJS.user.fetching,
   };
 }
@@ -168,4 +172,5 @@ function mapStateToProps(state) {
 // don't need mapDispatchToProps b/c we are using action creators
 export default connect(mapStateToProps, {
   getRepositories,
+  filterRepositories
 })(Main);
