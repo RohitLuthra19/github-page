@@ -3,15 +3,13 @@ import { connect } from "react-redux";
 
 import ListItem from "../../components/ListItem";
 import Dropdown from "../../components/Dropdown";
-import { getRepositories, filterRepositories } from "../../redux/user/reducer";
+import { getRepositories, filterRepositories, typeFilterRepositories } from "../../redux/user/reducer";
 import RepoIcon from "../../assets/repo-icon";
 import "./Main.css";
 
 export class Main extends React.PureComponent {
   state = {
     searchInput: "",
-    selectedType: "all",
-    selectedLanguage: "all",
     type: [
       {
         id: 0,
@@ -30,6 +28,24 @@ export class Main extends React.PureComponent {
         title: "Private",
         selected: false,
         key: "private",
+      },
+      {
+        id: 3,
+        title: "Forks",
+        selected: false,
+        key: "forks",
+      },
+      {
+        id: 4,
+        title: "Archived",
+        selected: false,
+        key: "archived",
+      },
+      {
+        id: 5,
+        title: "Mirrors",
+        selected: false,
+        key: "mirrors",
       },
     ],
     language: [
@@ -65,25 +81,25 @@ export class Main extends React.PureComponent {
     this.setState({ searchInput: value });
   };
 
-  handleType = (id, key) => {
-    let temp = this.state.type;
-    temp.forEach((item) => (item.selected = false));
-    temp[id].selected = true;
+  handleType = (id, selectedType) => {
+    let { type } = this.state;
+    type.forEach((item) => (item.selected = false));
+    type[id].selected = true;
     this.setState({
-      type: temp,
-      selectedType: key,
+      type,
+    }, () => {
+      this.props.typeFilterRepositories(selectedType)
     });
   };
 
-  handleLanguage = (id, key) => {
+  handleLanguage = (id, selectedLanguage) => {
     let { language} = this.state;
     language.forEach((item) => (item.selected = false));
     language[id].selected = true;
     this.setState({
       language,
-      selectedLanguage: key,
     }, () => {
-      this.props.filterRepositories(key)
+      this.props.filterRepositories(selectedLanguage)
     });
   };
 
@@ -172,5 +188,6 @@ function mapStateToProps(state) {
 // don't need mapDispatchToProps b/c we are using action creators
 export default connect(mapStateToProps, {
   getRepositories,
-  filterRepositories
+  filterRepositories,
+  typeFilterRepositories
 })(Main);

@@ -43,20 +43,62 @@ const reducer = (state = initialState, action) => {
         .setIn(["user", "error"], true);
 
     case types.FILTER_REPOSITORIES_REQUEST:
-      // const clonedFilteredRepos = state.getIn(["user", "filteredRepos"]);
       const clonedRepo = state.getIn(["user", "repos"]);
-      if(action?.language !== 'all') {
+      if (action?.languageFilter !== "all") {
         const filteredRepos = clonedRepo.filter(
-          (item) => item?.language?.toLowerCase() === action?.language.toLowerCase()
+          (item) =>
+            item?.language?.toLowerCase() ===
+            action?.languageFilter.toLowerCase()
         );
         return state.setIn(["user", "filteredRepos"], filteredRepos);
       } else {
-        return state.setIn(["user", "filteredRepos"], clonedRepo)
+        return state.setIn(["user", "filteredRepos"], clonedRepo);
       }
 
-    case types.RESET_FILTER_REPOSITORIES_REQUEST:
-      const resetRepos = state.getIn(["user", "repos"]);
-      return state.setIn(["user", "filteredRepos"], resetRepos);
+    case types.TYPE_FILTER_REPOSITORIES_REQUEST:
+      const clonedRepoForTypeFilter = state.getIn(["user", "repos"]);
+      switch (action?.typeFilter) {
+        case "all":
+          return state.setIn(
+            ["user", "filteredRepos"],
+            clonedRepoForTypeFilter
+          );
+        case "private": {
+          const filteredRepos = clonedRepoForTypeFilter.filter(
+            (item) => item?.private === true
+          );
+          return state.setIn(["user", "filteredRepos"], filteredRepos);
+        }
+        case "public": {
+          const filteredRepos = clonedRepoForTypeFilter.filter(
+            (item) => item?.private === false
+          );
+          return state.setIn(["user", "filteredRepos"], filteredRepos);
+        }
+        case "forks": {
+          const filteredRepos = clonedRepoForTypeFilter.filter(
+            (item) => item?.forks !== 0
+          );
+          return state.setIn(["user", "filteredRepos"], filteredRepos);
+        }
+        case "archived": {
+          const filteredRepos = clonedRepoForTypeFilter.filter(
+            (item) => item?.archived === true
+          );
+          return state.setIn(["user", "filteredRepos"], filteredRepos);
+        }
+        case "mirrors": {
+          const filteredRepos = clonedRepoForTypeFilter.filter(
+            (item) => item?.mirror_url !== null
+          );
+          return state.setIn(["user", "filteredRepos"], filteredRepos);
+        }
+        default:
+          return state.setIn(
+            ["user", "filteredRepos"],
+            clonedRepoForTypeFilter
+          );
+      }
 
     default:
       return state;
@@ -67,10 +109,11 @@ export default reducer;
 
 export const getUserProfile = () => ({ type: types.GET_USER_PROFILE_REQUEST });
 export const getRepositories = () => ({ type: types.GET_REPOSITORIES_REQUEST });
-export const filterRepositories = (language) => ({
+export const filterRepositories = (languageFilter) => ({
   type: types.FILTER_REPOSITORIES_REQUEST,
-  language,
+  languageFilter,
 });
-export const resetFilter = () => ({
-  type: types.RESET_FILTER_REPOSITORIES_REQUEST,
+export const typeFilterRepositories = (typeFilter) => ({
+  type: types.TYPE_FILTER_REPOSITORIES_REQUEST,
+  typeFilter,
 });
