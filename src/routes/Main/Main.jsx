@@ -10,52 +10,54 @@ import "./Main.css";
 export class Main extends React.PureComponent {
   state = {
     searchInput: "",
+    selectedType: "all",
+    selectedLanguage: "all",
     type: [
       {
         id: 0,
-        title: 'All',
+        title: "All",
         selected: true,
-        key: 'all'
+        key: "all",
       },
       {
         id: 1,
-        title: 'Public',
+        title: "Public",
         selected: false,
-        key: 'public'
+        key: "public",
       },
       {
         id: 2,
-        title: 'Private',
+        title: "Private",
         selected: false,
-        key: 'private'
-      }
+        key: "private",
+      },
     ],
     language: [
       {
         id: 0,
-        title: 'All',
+        title: "All",
         selected: true,
-        key: 'all'
+        key: "all",
       },
       {
         id: 1,
-        title: 'JavaScript',
+        title: "JavaScript",
         selected: false,
-        key: 'javascript'
+        key: "javascript",
       },
       {
         id: 2,
-        title: 'Html',
+        title: "Html",
         selected: false,
-        key: 'HTML'
+        key: "HTML",
       },
       {
         id: 3,
-        title: 'CSS',
+        title: "CSS",
         selected: false,
-        key: 'css'
+        key: "css",
       },
-    ]
+    ],
   };
 
   handleChange = (event) => {
@@ -63,23 +65,25 @@ export class Main extends React.PureComponent {
     this.setState({ searchInput: value });
   };
 
-  handleType = (id) => {
-    let temp = this.state.type
-    temp.forEach(item => item.selected = false);
+  handleType = (id, key) => {
+    let temp = this.state.type;
+    temp.forEach((item) => (item.selected = false));
     temp[id].selected = true;
     this.setState({
-      type: temp
+      type: temp,
+      selectedType: key,
     });
-  }
+  };
 
-  handleLanguage = (id) => {
-    let temp = this.state.language
-    temp.forEach(item => item.selected = false);
+  handleLanguage = (id, key) => {
+    let temp = this.state.language;
+    temp.forEach((item) => (item.selected = false));
     temp[id].selected = true;
     this.setState({
-      language: temp
+      language: temp,
+      selectedLanguage: key,
     });
-  }
+  };
 
   render() {
     const { repos, fetching } = this.props;
@@ -137,14 +141,14 @@ export class Main extends React.PureComponent {
   //  RENDER METHODS
   ///////////////////////////////////////////////////////////////////////
   renderRepositories(repos) {
-    const { searchInput } = this.state;
+    const { searchInput, } = this.state;
     return repos
       .filter((item) =>
         item?.name?.toLowerCase().includes(searchInput?.toLowerCase())
       )
-      .map((repo) => {
+      .map((repo) => {;
         return <ListItem key={repo?.id} data={repo} />;
-      });
+      })
   }
 }
 
