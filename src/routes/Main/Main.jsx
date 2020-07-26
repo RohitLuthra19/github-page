@@ -110,19 +110,18 @@ export class Main extends React.PureComponent {
               <Dropdown
                 title="Type"
                 list={type}
-                resetThenSet={this.resetThenSet}
+                resetThenSet={this.handleType}
               />
 
               <Dropdown
                 title="Language"
                 list={language}
-                resetThenSet={this.resetThenSet}
+                resetThenSet={this.handleLanguage}
               />
+
               <button className="btn btn-primary">
                 <RepoIcon className="repo-icon" /> New
               </button>
-
-              
             </div>
           </form>
           <ul className="repo-list">{this.renderRepositories(repos)}</ul>
