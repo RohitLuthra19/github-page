@@ -2,7 +2,7 @@ import React from 'react';
 
 import "./Spinner.css";
 
-export const Spinner = (props: Props) => {
+export const Spinner = (props) => {
   const { left, top, fontSize, visible } = props;
   const style = {
     left,

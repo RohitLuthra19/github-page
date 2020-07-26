@@ -28,7 +28,7 @@ export class SideNav extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className="side">
+      <>
         <img
           className="user"
           alt=""
@@ -42,7 +42,7 @@ export class SideNav extends React.PureComponent {
           <span className="username">{login}</span>
         </h1>
 
-        {bio && <div>{bio}</div>}
+        {bio && <div className="description">{bio}</div>}
         <div className="btn-group">
           <button className="btn">Follow</button>
           <button className="report-btn">
@@ -78,7 +78,7 @@ export class SideNav extends React.PureComponent {
             </li>
           )}
         </ul>
-      </div>
+      </>
     );
   }
 

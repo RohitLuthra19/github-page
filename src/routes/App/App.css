@@ -1,11 +1,19 @@
-.row {  
-    display: flex;
-    flex-wrap: wrap;
+.container {
+  display: flex;
+}
+
+.side {
+  flex: 1;
+  padding: 0  20px;
 }
 
 .main {
-  flex: 80%;
-  /* background-color: #f1f1f1; */
-  padding: 20px;
-  height: 100vh;
+  flex: 4;
+}
+
+@media (max-width: 600px) {
+  .container {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
 }

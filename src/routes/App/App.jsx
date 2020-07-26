@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import "./App.css";
 import SideNav from "../SideNav/SideNav";
 import Main from "../Main/Main";
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner from "../../components/Spinner";
 
 const App = () => {
   const user = useSelector(state => state.user);
@@ -15,13 +15,15 @@ const App = () => {
 
   return (
     <>
-      <div className="row">
-        <SideNav />
-        <div className="main">
+      <section className="container">
+        <aside className="side">
+          <SideNav />
+        </aside>
+        <main className="main">
           <Main />
-        </div>
-      </div>}
-      <Spinner left={"60%"} top={"60%"} fontSize={"3em"} visible={fetching} />
+        </main>
+      </section>
+      <Spinner left={"50%"} top={"50%"} fontSize={"3em"} visible={fetching} />
     </>
   )
 };

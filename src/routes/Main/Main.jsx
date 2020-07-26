@@ -1,21 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import ListItem from '../../components/ListItem'
 import "./Main.css";
-
 import { getRepositories } from '../../redux/user/reducer';
 
 export class Main extends React.PureComponent {
     render() {
       const { repos } = this.props;
-      console.log(repos)
       return (
-        <div className="main">
-          <div className="wrapper">
-            {this.renderImages(repos)}
-            
-          </div>
-        </div>
+        <ul className="repo-list">
+          {this.renderRepositories(repos)}
+        </ul>
       );
     }
 
@@ -29,7 +25,10 @@ export class Main extends React.PureComponent {
     ///////////////////////////////////////////////////////////////////////
     //  RENDER METHODS
     ///////////////////////////////////////////////////////////////////////
-    renderImages(repos) {
+    renderRepositories(repos) {
+      return repos.map(repo => {
+        return (<ListItem key={repo?.id} data={repo} />)
+      })
     }
 }
 
