@@ -14,7 +14,7 @@ export function fetchData(baseUrl) {
 
   return axios.get(url)
     .then(val => val)
-    .catch(err => console.log('get single category error: ', err))
+    .catch(err => console.log('get repos error: ', err))
 }
 
 // worker saga: makes the api call when watcher saga sees the action

@@ -2,19 +2,27 @@
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding: 24px 0;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
 }
 
 .repo-li-heading {
+  font-size: 20px;
   color: #0366d6;
   text-decoration: none;
 }
+
 .repo-li-other-detail {
   display: flex;
   flex-direction: row;
+  color: #586069;
+  font-size: 12px
 }
 
 .repo-language-container {
   vertical-align: middle;
+  margin-right: 20px;
 }
 
 .repo-language-color {
@@ -28,4 +36,12 @@
 
 .repo-language-text-color {
   margin-left: 5px;
+}
+
+.repo-li-description {
+  color: #586069;
+  margin: 10px 0;
+}
+
+.repo-language-updated-date {
 }

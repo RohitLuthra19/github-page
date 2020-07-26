@@ -10,6 +10,8 @@ export const ListItem = (props) => {
     data: { name, description, language, html_url, updated_at },
   } = props;
   const languageColor = languageColors[language]?.color;
+  const updatedDate = new Date(updated_at).toDateString().slice(4);
+
 
   return (
     <li className="repo-li">
@@ -19,7 +21,7 @@ export const ListItem = (props) => {
             {name}
           </a>
         </h3>
-        <p>{description}</p>
+        <p className="repo-li-description">{description}</p>
       </div>
       <div className="repo-li-other-detail">
         {language && (
@@ -31,7 +33,7 @@ export const ListItem = (props) => {
             <span className="repo-language-text-color">{language}</span>
           </span>
         )}
-        <span>{updated_at}</span>
+        <span className="repo-language-updated-date">Updated on {updatedDate}</span>
       </div>
     </li>
   );

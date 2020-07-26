@@ -21,7 +21,6 @@ const reducer = (state = initialState, action) => {
             return state.setIn(['user', 'fetching'], false)
               .setIn(['user', 'error'], true);
 
-        //Get Specific category
         case types.GET_REPOSITORIES_REQUEST:
             return state.setIn(['user', 'fetching'], true)
               .setIn(['user', 'error'], false);

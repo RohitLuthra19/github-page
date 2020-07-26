@@ -4,16 +4,16 @@
 
 .side {
   flex: 1;
-  padding: 0  20px;
+  padding: 0 16px;
 }
 
 .main {
   flex: 4;
+  padding: 0 16px
 }
 
 @media (max-width: 600px) {
   .container {
-    -webkit-flex-direction: column;
     flex-direction: column;
   }
 }
