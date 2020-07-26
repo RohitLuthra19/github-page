@@ -13,6 +13,7 @@ import { getUserProfile } from "../../redux/user/reducer";
 export class SideNav extends React.PureComponent {
   render() {
     const {
+      fetching,
       profile: {
         name,
         login,
@@ -26,7 +27,9 @@ export class SideNav extends React.PureComponent {
       },
     } = this.props;
 
-    return (
+    if(fetching) {
+      return <>Loading...</>
+    } else return (
       <>
         <img
           className="user"
@@ -92,6 +95,7 @@ function mapStateToProps(state) {
 
   return {
     profile: userToJS.user.profile,
+    fetching: userToJS.user.fetching
   };
 }
 

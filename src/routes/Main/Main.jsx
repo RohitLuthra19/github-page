@@ -17,10 +17,12 @@ export class Main extends React.PureComponent {
   };
 
   render() {
-    const { repos } = this.props;
+    const { repos, fetching } = this.props;
     const { searchInput } = this.state;
 
-    return (
+    if(fetching) {
+      return <>Loading...</>
+    } else return (
       <>
         <form
           aria-label="Repositories"
@@ -79,6 +81,7 @@ function mapStateToProps(state) {
 
   return {
     repos: userToJS.user.repos,
+    fetching: userToJS.user.fetching
   };
 }
 
