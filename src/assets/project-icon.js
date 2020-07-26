@@ -1,7 +1,7 @@
 import React from "react";
 import "./icon.css"
 
-class ProjectIcon extends React.Component {
+class ProjectIcon extends React.PureComponent {
   render() {
     return (
       <svg

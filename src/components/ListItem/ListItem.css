@@ -3,8 +3,11 @@
   display: flex;
   flex-direction: column;
   padding: 24px 0;
-  border-top: 1px solid #e1e4e8;
   border-bottom: 1px solid #e1e4e8;
+}
+
+.repo-li:first-child {
+  border-top: 1px solid #e1e4e8; 
 }
 
 .repo-li-heading {

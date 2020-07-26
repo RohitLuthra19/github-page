@@ -1,7 +1,7 @@
 import React from "react";
 import "./icon.css"
 
-class LocationIcon extends React.Component {
+class LocationIcon extends React.PureComponent {
   render() {
     return (
       <svg

@@ -1,14 +1,18 @@
 import React from "react";
 import "./icon.css"
 
-class RepoIcon extends React.Component {
+class RepoIcon extends React.PureComponent {
+  
+
   render() {
+    const { className } = this.props;
+
     return (
       <svg
         height="16"
         width="16"
         aria-labelledby="title"
-        className="icon"
+        className={`${className} icon`}
         text="gray-light"
         viewBox="0 0 16 16"
         version="1.1"

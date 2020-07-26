@@ -30,7 +30,7 @@ export class SideNav extends React.PureComponent {
       <>
         <img
           className="user"
-          alt=""
+          alt="user profile"
           width="260"
           height="260"
           src={avatar_url}

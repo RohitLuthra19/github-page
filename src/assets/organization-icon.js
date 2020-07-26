@@ -1,7 +1,7 @@
 import React from "react";
 import "./icon.css"
 
-class OrganizationIcon extends React.Component {
+class OrganizationIcon extends React.PureComponent {
   render() {
     return (
       <svg

@@ -1,7 +1,7 @@
 import React from "react";
 import "./icon.css"
 
-class EmailIcon extends React.Component {
+class EmailIcon extends React.PureComponent {
   render() {
     return (
       <svg

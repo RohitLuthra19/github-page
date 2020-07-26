@@ -1,7 +1,7 @@
 import React from "react";
 import "./icon.css"
 
-class BookIcon extends React.Component {
+class BookIcon extends React.PureComponent {
   render() {
     return (
       <svg

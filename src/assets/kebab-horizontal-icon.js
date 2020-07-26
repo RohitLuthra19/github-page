@@ -1,7 +1,7 @@
 import React from "react";
 import "./icon.css"
 
-class KebabHorizontalIcon extends React.Component {
+class KebabHorizontalIcon extends React.PureComponent {
   render() {
     return (
       <svg
