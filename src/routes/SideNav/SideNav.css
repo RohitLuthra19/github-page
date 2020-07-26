@@ -88,5 +88,12 @@
 }
 
 .list-item {
-  margin: 0 4px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.list-item-text {
+  margin: 0 6px;
 }

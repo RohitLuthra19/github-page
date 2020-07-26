@@ -11,7 +11,7 @@ exports[`Main renders Main component created 1`] = `
       className="spinner"
       style={
         Object {
-          "display": "block",
+          "display": "none",
           "fontSize": "3em",
           "left": "60%",
           "top": "60%",
@@ -22,16 +22,6 @@ exports[`Main renders Main component created 1`] = `
         className="fa fa-circle-o-notch fa-spin"
       />
     </div>
-  </div>
-  <div
-    className="btn_wrapper"
-  >
-    <button
-      className="btn_more"
-      onClick={[Function]}
-    >
-      More
-    </button>
   </div>
 </div>
 `;
