@@ -77,7 +77,7 @@ const reducer = (state = initialState, action) => {
         }
         case "forks": {
           const filteredRepos = clonedRepoForTypeFilter.filter(
-            (item) => item?.forks !== 0
+            (item) => item?.fork === true
           );
           return state.setIn(["user", "filteredRepos"], filteredRepos);
         }

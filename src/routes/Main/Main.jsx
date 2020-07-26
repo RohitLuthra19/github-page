@@ -73,6 +73,12 @@ export class Main extends React.PureComponent {
         selected: false,
         key: "css",
       },
+      {
+        id: 4,
+        title: "TypeScript",
+        selected: false,
+        key: "typescript",
+      }
     ],
   };
 
