@@ -27,7 +27,7 @@ export class SideNav extends React.PureComponent {
           <span className="username">{login}</span>
         </h1>
 
-        <div>{bio}</div>
+        {bio && <div>{bio}</div>}
         <div className="btn-group">
           <button className="btn">Follow</button>
           <button className="report-btn"><KebabHorizontalIcon /></button>
@@ -37,10 +37,10 @@ export class SideNav extends React.PureComponent {
           <PeopleIcon /> <span className="label">{followers}</span> followers <span className="label middle"></span> <span className="label">{following}</span> following <span className="label middle"></span> <StarIcon /> <span className="label">7</span>
         </div>
 
-        <ul>
-          <li><OrganizationIcon/>{company}</li>
-          <li><LocationIcon/>{location}</li>
-          <li><EmailIcon/>{email}</li>
+        <ul className="other-details">
+          {company && <li><OrganizationIcon/><span className="list-item">{company}</span></li>}
+          {location && <li><LocationIcon/><span className="list-item">{location}</span></li>}
+          {email && <li><EmailIcon/><span className="list-item">{email}</span></li>}
         </ul>
 
       </div>
