@@ -1,27 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main renders Main component created 1`] = `
-<div
-  className="main"
->
-  <div
-    className="wrapper"
-  >
-    <div
-      className="spinner"
-      style={
-        Object {
-          "display": "none",
-          "fontSize": "3em",
-          "left": "60%",
-          "top": "60%",
-        }
-      }
-    >
-      <span
-        className="fa fa-circle-o-notch fa-spin"
-      />
-    </div>
-  </div>
-</div>
-`;
+exports[`Main renders Main component created 1`] = `"Loading..."`;

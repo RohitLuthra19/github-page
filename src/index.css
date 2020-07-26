@@ -5,6 +5,7 @@
 }
 
 body,
+button,
 p,
 h1,
 h2,
@@ -28,4 +29,8 @@ body {
   line-height: 1.5;
   color: #24292e;
   background-color: #fff;
+}
+
+button {
+  border: none;
 }
