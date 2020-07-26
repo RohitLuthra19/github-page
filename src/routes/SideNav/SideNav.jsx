@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import PeopleIcon from "../../assets/people-icon";
-import KebabHorizontalIcon from "../../assets/kebab-horizontal-icon";
 import StarIcon from "../../assets/star-icon";
 import OrganizationIcon from "../../assets/organization-icon";
 import LocationIcon from "../../assets/location-icon";
@@ -44,10 +43,7 @@ export class SideNav extends React.PureComponent {
 
         {bio && <div className="description">{bio}</div>}
         <div className="btn-group">
-          <button className="btn">Follow</button>
-          <button className="report-btn">
-            <KebabHorizontalIcon />
-          </button>
+          <button className="btn">Edit profile</button>
         </div>
 
         <div className="follower-following">
