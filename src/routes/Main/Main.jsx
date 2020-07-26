@@ -4,28 +4,45 @@ import { connect } from "react-redux";
 import ListItem from "../../components/ListItem";
 import "./Main.css";
 import { getRepositories } from "../../redux/user/reducer";
-import RepoIcon from '../../assets/repo-icon'
+import RepoIcon from "../../assets/repo-icon";
 
 export class Main extends React.PureComponent {
+  state = {
+    searchInput: "",
+  };
+
+  handleChange = (event) => {
+    const { value } = event.target;
+    this.setState({ searchInput: value });
+  };
+
   render() {
     const { repos } = this.props;
+    const { searchInput } = this.state;
+
     return (
       <>
-        <form aria-label="Repositories" role="search" className="search-form md-flex md-flex-wrap">
+        <form
+          aria-label="Repositories"
+          role="search"
+          className="search-form md-flex md-flex-wrap"
+        >
+          <input
+            type="search"
+            id="repos-filter"
+            name="search-box"
+            placeholder="Find a repository…"
+            autoComplete="off"
+            aria-label="Find a repository…"
+            value={searchInput}
+            className="search-box"
+            onChange={this.handleChange}
+          />
           <div className="md-flex">
-            <input
-              type="search"
-              id="repos-filter"
-              name="search-box"
-              placeholder="Find a repository…"
-              autoComplete="off"
-              aria-label="Find a repository…"
-              value=""
-              className="search-box"
-              onChange={() => {}}
-            />
+            <button className="btn btn-primary">
+              <RepoIcon className="repo-icon" /> New
+            </button>
           </div>
-          <button className="btn btn-primary"><RepoIcon className="repo-icon"/> New</button>
         </form>
         <ul className="repo-list">{this.renderRepositories(repos)}</ul>
       </>
@@ -42,9 +59,14 @@ export class Main extends React.PureComponent {
   //  RENDER METHODS
   ///////////////////////////////////////////////////////////////////////
   renderRepositories(repos) {
-    return repos.map((repo) => {
-      return <ListItem key={repo?.id} data={repo} />;
-    });
+    const { searchInput } = this.state;
+    return repos
+      .filter((item) =>
+        item?.name?.toLowerCase().includes(searchInput?.toLowerCase())
+      )
+      .map((repo) => {
+        return <ListItem key={repo?.id} data={repo} />;
+      });
   }
 }
 
