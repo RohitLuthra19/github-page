@@ -7,6 +7,10 @@
   border-radius: 50%;
 }
 
+.profile-container {
+  padding: 10px 10px 10px 0;
+}
+
 .fullname {
   font-size: 26px;
   line-height: 1.25;

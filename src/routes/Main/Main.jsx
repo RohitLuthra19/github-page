@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ListItem from "../../components/ListItem";
-import "./Main.css";
 import { getRepositories } from "../../redux/user/reducer";
 import RepoIcon from "../../assets/repo-icon";
+import "./Main.css";
 
 export class Main extends React.PureComponent {
   state = {
