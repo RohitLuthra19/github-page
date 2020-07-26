@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
+
+import PeopleIcon from '../../assets/people-icon';
+import KebabHorizontalIcon from '../../assets/kebab-horizontal'
+import StarIcon from '../../assets/star-icon'
 import "./SideNav.css";
 
 import { getUserProfile } from "../../redux/user/reducer";
@@ -8,7 +12,7 @@ import { getUserProfile } from "../../redux/user/reducer";
 export class SideNav extends React.PureComponent {
   render() {
     const {
-      profile: { name, login, avatar_url , bio},
+      profile: { name, login, avatar_url , bio, followers, following},
     } = this.props;
 
     return (
@@ -21,7 +25,15 @@ export class SideNav extends React.PureComponent {
         </h1>
 
         <div>{bio}</div>
-        <button className="btn">Follow</button>
+        <div className="btn-group">
+          <button className="btn">Follow</button>
+          <button className="report-btn"><KebabHorizontalIcon /></button>
+        </div>
+
+        <div className="follower-following">
+          <PeopleIcon /> <span className="label">{followers}</span> followers <span className="label middle"></span> <span className="label">{following}</span> following <span className="label middle"></span> <StarIcon /> <span className="label">7</span>
+        </div>
+
       </div>
     );
   }
